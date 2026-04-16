@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Konsultacja Tarotowa</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Georgia;
+    background: radial-gradient(circle,#12001f,#000);
+    color:white;
+    text-align:center;
+}
+
+/* HEADER */
+h1{
+    color:#d4af37;
+    margin-top:30px;
+    font-size:38px;
+    text-shadow:0 0 10px #d4af37;
+}
+
+.price{
+    margin-top:10px;
+    color:#d4af37;
+    font-size:20px;
+}
+
+/* CHECKBOX */
+.section{
+    margin-top:30px;
+}
+
+label{
+    display:block;
+    margin:10px auto;
+    max-width:320px;
+    text-align:left;
+    background:rgba(255,255,255,0.05);
+    padding:10px;
+    border-radius:10px;
+}
+
+/* BUTTON */
+button{
+    margin-top:20px;
+    padding:12px 25px;
+    background:#25D366;
+    border:none;
+    border-radius:30px;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* TESTIMONIALS */
+.testimonials{
+    margin-top:50px;
+    padding:20px;
+}
+
+.box{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(212,175,55,0.3);
+    margin:10px auto;
+    max-width:650px;
+    padding:15px;
+    border-radius:15px;
+    animation:fade 6s infinite alternate;
+}
+
+@keyframes fade{
+    from{opacity:0.4; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* FOOTER */
+footer{
+    margin-top:40px;
+    padding:20px;
+    opacity:0.6;
+    font-size:12px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🔮 Konsultacja Tarotowa</h1>
+<p class="price">Cena: 200 zł</p>
+
+<!-- CHECKBOX -->
+<div class="section">
+
+<h3>Wybierz co Cię dotyczy 👇</h3>
+
+<label><input type="checkbox" value="Miłość"> 💖 Miłość</label>
+<label><input type="checkbox" value="Praca"> 💼 Praca</label>
+<label><input type="checkbox" value="Finanse"> 💰 Finanse</label>
+<label><input type="checkbox" value="Rodzina / Dziecko"> 👶 Rodzina / Dziecko</label>
+<label><input type="checkbox" value="Zdrada / podejrzenia"> 💔 Zdrada / podejrzenia</label>
+<label><input type="checkbox" value="Przyszłość ogólna"> 🔮 Przyszłość ogólna</label>
+
+</div>
+
+<button onclick="sendWhatsApp()">
+💬 Przejdź do WhatsApp
+</button>
+
+<!-- TESTIMONIALS -->
+<div class="testimonials">
+
+<h2 style="color:#d4af37;">⭐ Opinie klientów</h2>
+
+<div class="box">
+"Nie wierzyłam, ale wszystko się sprawdziło bardzo dokładnie." – Anna, Warszawa
+</div>
+
+<div class="box">
+"Pomogło mi to w miłości i decyzjach życiowych." – Michał, Kraków
+</div>
+
+<div class="box">
+"Bardzo profesjonalna konsultacja, szybka odpowiedź." – Karolina, Gdańsk
+</div>
+
+<div class="box">
+"Tarot idealnie opisał moją sytuację finansową." – Tomasz, Poznań
+</div>
+
+</div>
+
+<footer>
+© 2026 Profesjonalne Wróżby Tarotowe | Wszystkie prawa zastrzeżone
+</footer>
+
+<script>
+function sendWhatsApp(){
+
+    let checks = document.querySelectorAll("input[type=checkbox]");
+    let selected = [];
+
+    checks.forEach(c=>{
+        if(c.checked) selected.push(c.value);
+    });
+
+    if(selected.length === 0){
+        alert("Wybierz przynajmniej jedną opcję");
+        return;
+    }
+
+    let message =
+`Witam, chcę konsultację tarotową (200 zł).
+
+Obszary:
+${selected.join(", ")}`;
+
+    let url = "https://wa.me/48662700847?text=" + encodeURIComponent(message);
+
+    window.open(url,"_blank");
+}
+</script>
+
+</body>
+  </html>
